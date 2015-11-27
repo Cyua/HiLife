@@ -1,5 +1,6 @@
 package cyua.hilife;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -26,6 +27,15 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        findViewById(R.id.btnToWriteDiary).setOnClickListener(new View.OnClickListener() {
+            //the listener for button "btnToWriteDiary"
+            public void onClick(View v) {
+                //start the activity "writeDiary"
+                startActivity(new Intent(MainActivity.this,WriteDiary.class));
+            }
+        });
+
     }
 
     @Override

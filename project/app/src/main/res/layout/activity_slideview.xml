@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<cyua.hilife.CustomerView.SlideView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbars="none"
     android:background="@drawable/menu_bg"
-    tools:context="cyua.hilife.CustomerView.SlideView">
+    >
 
     <LinearLayout
         android:id="@+id/slide_view_layout"
@@ -282,4 +282,4 @@
 
     </LinearLayout>
     </LinearLayout>
-</RelativeLayout>
+</cyua.hilife.CustomerView.SlideView>

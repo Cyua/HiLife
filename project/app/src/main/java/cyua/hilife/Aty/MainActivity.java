@@ -11,6 +11,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import cyua.hilife.Fragment.ContactFragment;
+import cyua.hilife.Fragment.RecordFragment;
 import cyua.hilife.R;
 
 
@@ -57,8 +58,8 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
             case R.id.contact_rbtn:
                 switchFragment(new ContactFragment());
                 break;
-            case R.id.qzone_rbtn:
-                switchFragment(new ContactFragment());
+            case R.id.record_rbtn:
+                switchFragment(new RecordFragment());
                 break;
         }
     }

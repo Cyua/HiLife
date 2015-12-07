@@ -5,6 +5,7 @@
     android:background="@drawable/skin_conversation_bg"
     android:orientation="vertical"
     >
+
     <include layout="@layout/layout_main_title"/>
 
 

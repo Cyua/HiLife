@@ -10,6 +10,7 @@ import android.view.WindowManager;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import cyua.hilife.Fragment.ContactFragment;
 import cyua.hilife.R;
 
 
@@ -25,12 +26,37 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        initData();
     }
 
+    void initData(){
+        msg_rbtn = (RadioButton) findViewById(R.id.contact_rbtn);
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        msg_rbtn.setChecked(true);
+        radioGroup.setOnCheckedChangeListener(this);
 
+        fragmentTransaction.add(R.id.fragment, new ContactFragment());
+        fragmentTransaction.commit();
+    }
 
+    void switchFragment(Fragment fragment){
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment, fragment);
+        fragmentTransaction.commit();
+    }
 
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-
+        switch (checkedId){
+            case R.id.msg_rbtn:
+                switchFragment(new ContactFragment());
+                break;
+            case R.id.contact_rbtn:
+                switchFragment(new ContactFragment());
+                break;
+            case R.id.qzone_rbtn:
+                switchFragment(new ContactFragment());
+                break;
+        }
     }
 }

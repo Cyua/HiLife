@@ -221,7 +221,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:button="@null"
-                android:background="@drawable/msg_bg_selector"
+                android:background="@drawable/axis_bg_selector"
                 android:layout_gravity="center"
                 />
 
@@ -234,7 +234,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:button="@null"
-                android:background="@drawable/contact_bg_selector"
+                android:background="@drawable/calendar_bg_selector"
                 android:layout_gravity="center"
                 />
 
@@ -247,7 +247,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:button="@null"
-                android:background="@drawable/qzone_bg_selector"
+                android:background="@drawable/record_bg_selector"
                 android:layout_gravity="center"
                 />
 

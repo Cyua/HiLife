@@ -7,21 +7,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.TextView;
 import cyua.hilife.R;
 /**
  * Created by Cyua on 15/12/7.
  */
-public class ContactFragment extends Fragment {
+public class CalendarFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.layout_contact_fragment,null);
+        View view = inflater.inflate(R.layout.layout_calendar_fragment,null);
         TextView title = (TextView) view.findViewById(R.id.title_tv);
         Button button = (Button) view.findViewById(R.id.header_imgbtn);
-        title.setText("联系人");
+        title.setText("日历");
         button.setBackgroundColor(Color.TRANSPARENT);
         button.setText("添加");
 
+        CalendarView cv = (CalendarView)view.findViewById(R.id.calendarView);
+        cv.setMaxDate(cv.getDate());
+        cv.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+
+            }
+        });
         return view;
     }
 }

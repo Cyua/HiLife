@@ -10,7 +10,7 @@ import android.view.WindowManager;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import cyua.hilife.Fragment.ContactFragment;
+import cyua.hilife.Fragment.CalendarFragment;
 import cyua.hilife.Fragment.RecordFragment;
 import cyua.hilife.R;
 
@@ -35,12 +35,12 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
     }
 
     void initData(){
-        msg_rbtn = (RadioButton) findViewById(R.id.contact_rbtn);
+        msg_rbtn = (RadioButton) findViewById(R.id.calendar_rbtn);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         msg_rbtn.setChecked(true);
         radioGroup.setOnCheckedChangeListener(this);
 
-        fragmentTransaction.add(R.id.fragment, new ContactFragment());
+        fragmentTransaction.add(R.id.fragment, new CalendarFragment());
         fragmentTransaction.commit();
     }
 
@@ -53,10 +53,10 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         switch (checkedId){
             case R.id.msg_rbtn:
-                switchFragment(new ContactFragment());
+                switchFragment(new CalendarFragment());
                 break;
-            case R.id.contact_rbtn:
-                switchFragment(new ContactFragment());
+            case R.id.calendar_rbtn:
+                switchFragment(new CalendarFragment());
                 break;
             case R.id.record_rbtn:
                 switchFragment(new RecordFragment());

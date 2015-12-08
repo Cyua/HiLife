@@ -227,7 +227,7 @@
 
             <!-- 联系人-->
             <RadioButton
-                android:id="@+id/contact_rbtn"
+                android:id="@+id/calendar_rbtn"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
                 android:layout_weight="1"

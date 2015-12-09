@@ -6,6 +6,7 @@ package cyua.hilife.CustomerView;
 public class TimeLineModel {
     private int imageview;
     private String text;
+    private String date;
 
     public int getImageview(){
         return imageview;
@@ -23,9 +24,18 @@ public class TimeLineModel {
         this.text = text;
     }
 
-    public TimeLineModel(int imageview, String text){
+    public String getDate(){
+        return date;
+    }
+
+    public void setDate(String date){
+        this.date = date;
+    }
+
+    public TimeLineModel(int imageview, String date, String text){
         super();
         this.imageview = imageview;
         this.text = text;
+        this.date = date;
     }
 }

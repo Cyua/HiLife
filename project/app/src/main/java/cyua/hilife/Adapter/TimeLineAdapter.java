@@ -56,15 +56,20 @@ public class TimeLineAdapter extends BaseAdapter{
         } else {
             hold = (ViewHold) convertView.getTag();
         }
-        hold.imageView = (ImageView) convertView.findViewById(R.id.left_imageview);
+
+        hold.dateshow = (TextView) convertView.findViewById(R.id.left_dateview);
+        hold.imageView = (ImageView) convertView.findViewById(R.id.middle_imageview);
         hold.show = (TextView) convertView.findViewById(R.id.right_textview);
 
+        hold.dateshow.setText(list.get(position).getDate());
         hold.imageView.setImageResource(list.get(position).getImageview());
         hold.show.setText(list.get(position).getText());
+
         return convertView;
     }
 
     static class ViewHold{
+        public TextView dateshow;
         public TextView show;
         public ImageView imageView;
     }

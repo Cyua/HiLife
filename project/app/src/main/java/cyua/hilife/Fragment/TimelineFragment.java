@@ -50,19 +50,18 @@ public class TimelineFragment extends Fragment{
     private void initData(){
         list = new ArrayList<TimeLineModel>();
 
-        list.add(new TimeLineModel(R.drawable.medicalcheck2, "hahahah"));
+        list.add(new TimeLineModel(R.drawable.medicalcheck2, "10月10日","hahahah"));
 
-        list.add(new TimeLineModel(R.drawable.medicalcheck2, "hahahah"));
-        list.add(new TimeLineModel(R.drawable.medicalcheck2, "hahahah"));
-        list.add(new TimeLineModel(R.drawable.medicalcheck2, "hahahah"));
-        list.add(new TimeLineModel(R.drawable.medicalcheck2, "hahahah"));
-        list.add(new TimeLineModel(R.drawable.medicalcheck2, "hahahah"));
-        list.add(new TimeLineModel(R.drawable.medicalcheck2, "hahahah"));
-        list.add(new TimeLineModel(R.drawable.medicalcheck2, "hahahah"));
-        list.add(new TimeLineModel(R.drawable.medicalcheck2, "hahahah"));
-        list.add(new TimeLineModel(R.drawable.medicalcheck2, "hahahah"));
-        list.add(new TimeLineModel(R.drawable.medicalcheck2, "hahahah"));
-        list.add(new TimeLineModel(R.drawable.medicalcheck2, "hahahah"));
+        list.add(new TimeLineModel(R.drawable.nurse_visit2, "11月11日","233333"));
+
+        list.add(new TimeLineModel(R.drawable.nursingcareplan2, "12月12日","Today is Dec 9th. And I feel really bad.."));
+
+        list.add(new TimeLineModel(R.drawable.medicalcheck2, "1月1日","Forget the message above! 2333333"));
+
+        list.add(new TimeLineModel(R.drawable.nurse_visit2, "2月2日","Hellooooooooooo! Yohoooooooo!"));
+
+        list.add(new TimeLineModel(R.drawable.nursingcareplan2, "3月3日","I'm gonna be crazy..."));
+
 
     }
 

@@ -1,5 +1,7 @@
 package cyua.hilife.Fragment;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -17,6 +19,7 @@ import java.util.List;
 
 import cyua.hilife.Adapter.TimeLineAdapter;
 import cyua.hilife.CustomerView.TimeLineModel;
+import cyua.hilife.Database.DbOpenHelper;
 import cyua.hilife.R;
 /**
  * Created by Cyua on 15/12/9.
@@ -25,6 +28,8 @@ public class TimelineFragment extends Fragment{
     private ListView listView;
     private List<TimeLineModel> list;
     private TimeLineAdapter adapter;
+    private DbOpenHelper dbOpenHelper;
+    private SQLiteDatabase db;
     View view;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,6 +39,8 @@ public class TimelineFragment extends Fragment{
         title.setText("时光轴");
         button.setBackgroundColor(Color.TRANSPARENT);
         button.setText("添加");
+
+        dbOpenHelper = new DbOpenHelper(this.getContext());
 
         initData();
         initView();
@@ -50,6 +57,18 @@ public class TimelineFragment extends Fragment{
     private void initData(){
         list = new ArrayList<TimeLineModel>();
 
+        db = dbOpenHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM diary", new String[]{});
+
+        while (cursor.moveToNext()) {
+            TimeLineModel tlm = new TimeLineModel(R.drawable.medicalcheck2,
+                    cursor.getString(cursor.getColumnIndex("datetime")),
+                    cursor.getString(cursor.getColumnIndex("content")));
+            list.add(tlm);
+        }
+
+        db.close();
+        /*
         list.add(new TimeLineModel(R.drawable.medicalcheck2, "10月10日","hahahah"));
 
         list.add(new TimeLineModel(R.drawable.nurse_visit2, "11月11日","233333"));
@@ -61,7 +80,7 @@ public class TimelineFragment extends Fragment{
         list.add(new TimeLineModel(R.drawable.nurse_visit2, "2月2日","Hellooooooooooo! Yohoooooooo!"));
 
         list.add(new TimeLineModel(R.drawable.nursingcareplan2, "3月3日","I'm gonna be crazy..."));
-
+*/
 
     }
 

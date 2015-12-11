@@ -37,6 +37,7 @@
                 />
             <TextView
                 android:text="Cyua"
+                android:id="@+id/username"
                 android:textSize="20sp"
                 android:textColor="#fff"
                 android:layout_marginLeft="10dp"

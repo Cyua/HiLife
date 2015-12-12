@@ -49,7 +49,7 @@ public class ChatArrayAdapter extends ArrayAdapter {
         ChatMessage chatMessageObj = getItem(position);
         chatText = (TextView) row.findViewById(R.id.singleMessage);
         if (chatMessageObj.isAudio)
-            chatText.setText("(audio)");
+            chatText.setText(chatMessageObj.audioDuration);
         else
             chatText.setText(chatMessageObj.message);
         chatText.setBackgroundResource(chatMessageObj.isLeft ? R.drawable.in : R.drawable.out);

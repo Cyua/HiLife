@@ -9,17 +9,26 @@ public class HintMessage extends ChatMessage {
     private static String[] morningHints = {
             "早上好，昨晚睡得怎么样？",
             "为新的一天做好准备了吗？",
+            "精神不错吧？",
+            "让我们规划一下今天的安排吧？",
+            "吃早饭了吗？吃了些什么呢？",
+            "此时此刻，你身处何处，在做些什么？",
     };
 
     private static String[] afternoonHints = {
             "中午吃了什么？",
             "晚饭打算吃点什么呢？",
+            "此时此刻，你身处何处，在做些什么？",
+            "上午过得怎么样？",
     };
 
     private static String[] eveningHints = {
             "晚饭吃了什么呢？",
             "今天看书了吗？看了些什么？",
             "晚上有什么规划？",
+            "总结一下今天的生活吧",
+            "此时此刻，你身处何处，在做些什么？",
+            "忙了一天，现在最想做些什么？",
     };
 
     private static String[] weekendHints = {

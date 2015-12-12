@@ -3,7 +3,6 @@ package cyua.hilife.Fragment;
 import android.database.DataSetObserver;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaRecorder;
-import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +16,9 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import java.io.IOException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -62,7 +64,7 @@ public class RecordFragment extends Fragment {
 
         provideHint();
         openDatetime = getDateTime();
-        audioFilename = this.getContext().getFilesDir().toString() + "/" + openDatetime.hashCode();
+        audioFilename = this.getContext().getFilesDir().toString() + "/" + getHexHash(openDatetime);
 
         chatText = (EditText) view.findViewById(R.id.chatText);
         chatText.setOnKeyListener(new View.OnKeyListener() {
@@ -156,6 +158,19 @@ public class RecordFragment extends Fragment {
                 "yyyy-MM-dd HH:mm:ss", Locale.getDefault());
         Date date = new Date();
         return dateFormat.format(date);
+    }
+
+    private String getHexHash(String s) {
+        String hash = "";
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(s.getBytes());
+            hash = String.format("%032X", new BigInteger(1, md.digest()));
+        }
+        catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return hash;
     }
 
     private boolean sendChatMessage() {

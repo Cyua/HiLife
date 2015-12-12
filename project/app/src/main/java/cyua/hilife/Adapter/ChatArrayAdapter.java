@@ -48,9 +48,12 @@ public class ChatArrayAdapter extends ArrayAdapter {
         singleMessageContainer = (LinearLayout) row.findViewById(R.id.singleMessageContainer);
         ChatMessage chatMessageObj = getItem(position);
         chatText = (TextView) row.findViewById(R.id.singleMessage);
-        chatText.setText(chatMessageObj.message);
-        chatText.setBackgroundResource(chatMessageObj.left ? R.drawable.in : R.drawable.out);
-        singleMessageContainer.setGravity(chatMessageObj.left? Gravity.LEFT : Gravity.RIGHT);
+        if (chatMessageObj.isAudio)
+            chatText.setText("(audio)");
+        else
+            chatText.setText(chatMessageObj.message);
+        chatText.setBackgroundResource(chatMessageObj.isLeft ? R.drawable.in : R.drawable.out);
+        singleMessageContainer.setGravity(chatMessageObj.isLeft? Gravity.LEFT : Gravity.RIGHT);
         return row;
     }
 

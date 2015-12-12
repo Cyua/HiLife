@@ -46,6 +46,7 @@ public class RecordFragment extends Fragment {
     private static final String LOG_TAG = "AudioRecord";
     private boolean startRecording = false;
     private MediaRecorder recorder;
+    private int audioCount = 0;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_record_fragment,null);
@@ -61,7 +62,7 @@ public class RecordFragment extends Fragment {
 
         provideHint();
         openDatetime = getDateTime();
-        audioFilename = this.getContext().getFilesDir().toString() + "/" + openDatetime.hashCode() + ".3gp";
+        audioFilename = this.getContext().getFilesDir().toString() + "/" + openDatetime.hashCode();
 
         chatText = (EditText) view.findViewById(R.id.chatText);
         chatText.setOnKeyListener(new View.OnKeyListener() {
@@ -86,11 +87,13 @@ public class RecordFragment extends Fragment {
         buttonAudio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
+                String currentFilename = audioFilename + "_" + audioCount + ".3gp";
                 if (!startRecording) {
+                    // start button pressed
                     recorder = new MediaRecorder();
                     recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
                     recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-                    recorder.setOutputFile(audioFilename);
+                    recorder.setOutputFile(currentFilename);
                     recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
 
                     try {
@@ -103,10 +106,14 @@ public class RecordFragment extends Fragment {
                     }
                 }
                 else {
+                    // stop button pressed
                     recorder.stop();
                     recorder.reset();
                     recorder.release();
                     recorder = null;
+
+                    audioCount++;
+                    chatArrayAdapter.add(new ChatMessage(false, true, currentFilename));
 
                     buttonAudio.setText("Audio");
                     startRecording = false;

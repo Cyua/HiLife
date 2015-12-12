@@ -1,5 +1,8 @@
 package cyua.hilife.CustomerView;
 
+import android.support.annotation.Nullable;
+
+import java.util.Calendar;
 import java.util.Random;
 
 public class HintMessage extends ChatMessage {
@@ -35,7 +38,29 @@ public class HintMessage extends ChatMessage {
             "你有没有美梦成真的经历？"
     };
 
+    @Nullable
     private String[] selectHints() {
+        Calendar now = Calendar.getInstance();
+        Random rand = new Random();
+
+        int type = rand.nextInt(3);
+        if (type == 0) {    // hints that given by day of week
+            int day = now.get(Calendar.DAY_OF_WEEK);
+            if (day >= 5 && day <= 7)
+                return weekendHints;
+            else
+                return allHints;
+        }
+        else {    // hints that given by hour of day
+            int hour = now.get(Calendar.HOUR_OF_DAY);
+            if (hour >= 4 && hour <= 12)
+                return morningHints;
+            else if (hour > 12 && hour <= 17)
+                return afternoonHints;
+            else if (hour > 17 && hour <= 23)
+                return eveningHints;
+        }
+
         return null;
     }
 

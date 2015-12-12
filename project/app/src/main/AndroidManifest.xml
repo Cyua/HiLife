@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cyua.hilife">
 
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_hilife"
@@ -19,9 +21,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Aty.MainActivity" />
-        <activity android:name=".CustomerView.SlideView"
-            ></activity>
+        <activity
+            android:name=".Aty.MainActivity"
+            android:windowSoftInputMode="adjustPan" >
+
+        </activity>
+        <activity android:name=".CustomerView.SlideView">
+
+        </activity>
     </application>
 
 </manifest>

@@ -26,7 +26,11 @@
             android:name=".Aty.NewAccountActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".Aty.EditAccountActivity"
+        <activity
+            android:name=".Aty.EditAccountActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".Aty.CheckAccountActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustResize"
             ></activity>

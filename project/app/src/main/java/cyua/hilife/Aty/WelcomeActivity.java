@@ -36,7 +36,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 if(msg.what == 1){
                     finish();
                     if(jumpDirction == true) {
-                        Intent intent = new Intent(WelcomeActivity.this,MainActivity.class);
+                        Intent intent = new Intent(WelcomeActivity.this,CheckAccountActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                     }

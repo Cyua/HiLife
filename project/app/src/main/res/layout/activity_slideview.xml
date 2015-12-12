@@ -55,7 +55,7 @@
             android:layout_weight="1"
             android:orientation="vertical"
             >
-            <!-- 个性签名-->
+            <!-- motto-->
             <View
                 android:background="#A8A8A8"
                 android:layout_width="match_parent"
@@ -80,6 +80,7 @@
                     android:layout_marginLeft="15dp"
                     android:text=""
                     android:textColor="#B7B7B7"
+                    android:id="@+id/motto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>

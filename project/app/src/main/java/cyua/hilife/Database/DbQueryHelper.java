@@ -11,16 +11,19 @@ public class DbQueryHelper {
     private DbOpenHelper dbOpenHelper;
     private SQLiteDatabase db;
     private String passwd;
+    private String motto;
     public DbQueryHelper(Context context){
         dbOpenHelper = new DbOpenHelper(context);
         db = dbOpenHelper.getWritableDatabase();
         passwd = "";
+        motto = "";
     }
     public String getUserName(){
         Cursor cursor = db.rawQuery("SELECT * FROM account", new String[]{});
         if (cursor.moveToNext()){
-            passwd = cursor.getString(cursor.getColumnIndex("passwd"));
-            return cursor.getString(cursor.getColumnIndex("username"));
+            passwd = cursor.getString(1);
+            motto = cursor.getString(2);
+            return cursor.getString(0);
         }
         return "";
     }
@@ -36,6 +39,9 @@ public class DbQueryHelper {
         return passwd;
     }
 
+    public String getMotto(){
+        return motto;
+    }
 
     public void closeDb(){
         db.close();

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#e8e8e8"
+    android:orientation="vertical"
+    tools:context="cyua.hilife.Aty.CheckAccountActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="请输入账号密码"
+        android:id="@+id/checkAccountView"
+        android:textColor="#e84c3d"
+        android:textAlignment="center"
+        android:typeface="monospace"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_marginTop="100dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:id="@+id/checkname"
+        android:layout_gravity="center_vertical"
+        android:enabled="true"
+        android:inputType="text"
+        android:editable="true"
+        android:gravity="center"
+        android:background="#ffffff"
+        android:hint="USER NAME"
+        android:textColorHint="@color/colorHint"
+        android:textColor="#000000"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="1dp"
+        android:id="@+id/checkpasswd"
+        android:layout_gravity="center_vertical"
+        android:enabled="true"
+        android:inputType="textPassword"
+        android:editable="true"
+        android:gravity="center"
+        android:background="#ffffff"
+        android:hint="PASSWORD"
+        android:textColorHint="@color/colorHint"
+        android:textColor="#000000"
+        />
+
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/checkAccountBtn"
+        android:text="LOG IN"
+        android:textColor="#ffffff"
+        android:background="#e84c3d"
+        android:focusable="true"
+        />
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text=""
+        android:id="@+id/passwdwarning"
+        android:textColor="#e84c3d"
+        android:textAlignment="textStart"
+        android:gravity="start"
+        android:typeface="monospace"
+        android:textSize="10dp"
+        android:layout_marginTop="50dp" />
+</LinearLayout>

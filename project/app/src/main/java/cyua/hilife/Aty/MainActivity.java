@@ -1,5 +1,6 @@
 package cyua.hilife.Aty;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -9,7 +10,9 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
+import cyua.hilife.Database.DbQueryHelper;
 import cyua.hilife.Fragment.CalendarFragment;
 import cyua.hilife.Fragment.RecordFragment;
 import cyua.hilife.Fragment.TimelineFragment;
@@ -32,10 +35,22 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         //透明导航栏
 //        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+
         initData();
+        View editAccount = findViewById(R.id.editInfomation);
+        editAccount.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(MainActivity.this, EditAccountActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     void initData(){
+        DbQueryHelper dbQueryHelper = new DbQueryHelper(this);
+        TextView textView = (TextView)findViewById(R.id.username);
+        textView.setText(dbQueryHelper.getUserName());
+
         timeline_rbtn = (RadioButton) findViewById(R.id.timeline_rbtn);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         timeline_rbtn.setChecked(true);

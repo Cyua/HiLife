@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#ffffff"
+    android:background="#e8e8e8"
     android:orientation="vertical"
     tools:context="cyua.hilife.Aty.NewAccountActivity">
 
@@ -15,33 +15,85 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="我该怎么称呼您?"
+        android:text="请设置账号密码"
         android:id="@+id/textView"
-        android:textColor="#000000"
+        android:textColor="#e84c3d"
         android:textAlignment="center"
         android:typeface="monospace"
-        android:textSize="25dp"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:layout_marginTop="100dp" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="50dp"
-        android:id="@+id/newaccounttext"
+        android:layout_marginTop="40dp"
+        android:id="@+id/newname"
         android:layout_gravity="center_vertical"
         android:enabled="true"
         android:inputType="text"
         android:editable="true"
         android:gravity="center"
+        android:background="#ffffff"
+        android:hint="USER NAME"
+        android:textColorHint="@color/colorHint"
         android:textColor="#000000"
          />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="1dp"
+        android:id="@+id/newpasswd"
+        android:layout_gravity="center_vertical"
+        android:enabled="true"
+        android:inputType="textPassword"
+        android:editable="true"
+        android:gravity="center"
+        android:background="#ffffff"
+        android:hint="PASSWORD"
+        android:textColorHint="@color/colorHint"
+        android:textColor="#000000"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="1dp"
+        android:id="@+id/newrepeatpasswd"
+        android:layout_gravity="center_vertical"
+        android:enabled="true"
+        android:inputType="textPassword"
+        android:editable="true"
+        android:gravity="center"
+        android:background="#ffffff"
+        android:hint="REPEAT"
+        android:textColorHint="@color/colorHint"
+        android:textColor="#000000"
+        android:nextFocusDown="@id/newaccountbtn"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:id="@+id/newaccountbtn"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="70dp"
-        android:clickable="true"
-        android:background="@drawable/button_confirm_selector"/>
+        android:text="LOG IN"
+        android:textColor="#ffffff"
+        android:background="#e84c3d"
+        android:focusable="true"
+        />
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text=""
+        android:id="@+id/passwdwarning"
+        android:textColor="#e84c3d"
+        android:textAlignment="textStart"
+        android:gravity="start"
+        android:typeface="monospace"
+        android:textSize="10dp"
+        android:layout_marginTop="50dp" />
 </LinearLayout>

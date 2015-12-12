@@ -18,14 +18,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Aty.MainActivity"
-            android:windowSoftInputMode="adjustResize"
-            />
+        <activity
+            android:name=".Aty.MainActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".CustomerView.SlideView" />
-        <activity android:name=".Aty.NewAccountActivity"
+        <activity
+            android:name=".Aty.NewAccountActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:windowSoftInputMode="adjustPan"
-           ></activity>
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".Aty.EditAccountActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="adjustResize"
+            ></activity>
     </application>
 
 </manifest>

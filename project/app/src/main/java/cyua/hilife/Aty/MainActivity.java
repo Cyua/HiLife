@@ -1,5 +1,6 @@
 package cyua.hilife.Aty;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -36,6 +37,13 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
 //        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 
         initData();
+        View editAccount = findViewById(R.id.editInfomation);
+        editAccount.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(MainActivity.this, EditAccountActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     void initData(){

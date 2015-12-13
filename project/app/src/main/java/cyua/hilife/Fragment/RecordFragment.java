@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaRecorder;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -20,7 +21,9 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import cyua.hilife.Adapter.ChatArrayAdapter;
@@ -185,31 +188,32 @@ public class RecordFragment extends Fragment {
 
     private void saveDiary() {
         String diaryTitle;
-        String diaryText;
+        String diaryContent;
         String diaryAudio;
 
         // Get diary title, diary content and diary audio
         diaryTitle = chatArrayAdapter.getItem(0).message;
 
-        StringBuilder stringBuilderText = new StringBuilder();
-        StringBuilder stringBuilderAudio = new StringBuilder();
+        List<String> lContent = new ArrayList<String>();
+        List<String> lAudio = new ArrayList<String>();
+
         for (int i = 1; i < chatArrayAdapter.getCount(); i++) {
             ChatMessage cm = chatArrayAdapter.getItem(i);
-            if (!cm.isAudio)    // The message is not audio, but text
-                stringBuilderText.append(cm.message + "\n");
-            else
-                stringBuilderAudio.append(cm.message + "\n");
+            if (cm.isAudio)
+                lAudio.add(cm.audioDuration + "," + cm.message);    // a line containing duration, comma, and path
+            else    // The message is not audio, but text
+                lContent.add(cm.message);
         }
-        diaryText = stringBuilderText.toString();
-        diaryAudio = stringBuilderAudio.toString();
+        diaryContent = TextUtils.join("\n", lContent);
+        diaryAudio = TextUtils.join("\n", lAudio);
 
         // Write to db if diary is not empty
-        if (diaryText.isEmpty() && diaryAudio.isEmpty())
+        if (diaryContent.isEmpty() && diaryAudio.isEmpty())
             return;
 
         db = dbOpenHelper.getWritableDatabase();
         db.execSQL("INSERT INTO diary(datetime,title,content,audio) VALUES(?,?,?,?)",
-                new String[] {openDatetime, diaryTitle, diaryText, diaryAudio});
+                new String[] {openDatetime, diaryTitle, diaryContent, diaryAudio});
         db.close();
     }
 }

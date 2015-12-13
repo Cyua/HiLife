@@ -1,12 +1,16 @@
 package cyua.hilife.CustomerView;
 
+import java.io.Serializable;
+
 /**
  * Created by Cyua on 15/12/9.
  */
-public class TimeLineModel {
+public class TimeLineModel implements Serializable {
     private int imageview;
-    private String text;
+    private String title;
+    private String content;
     private String date;
+    private String audio;
 
     public int getImageview(){
         return imageview;
@@ -16,12 +20,12 @@ public class TimeLineModel {
         this.imageview = imageview;
     }
 
-    public String getText(){
-        return text;
+    public String getContent(){
+        return content;
     }
 
-    public void setText(String text){
-        this.text = text;
+    public void setContent(String content){
+        this.content = content;
     }
 
     public String getDate(){
@@ -32,10 +36,28 @@ public class TimeLineModel {
         this.date = date;
     }
 
-    public TimeLineModel(int imageview, String date, String text){
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAudio() {
+        return audio;
+    }
+
+    public void setAudio(String audio) {
+        this.audio = audio;
+    }
+
+    public TimeLineModel(int imageview, String date, String title, String content, String audio){
         super();
         this.imageview = imageview;
-        this.text = text;
+        this.title = title;
+        this.content = content;
         this.date = date;
+        this.audio = audio;
     }
 }

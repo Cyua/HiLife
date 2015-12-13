@@ -1,5 +1,6 @@
 package cyua.hilife.Fragment;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.Fragment;
@@ -10,14 +11,17 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
 import cyua.hilife.Adapter.TimeLineAdapter;
+import cyua.hilife.Aty.DiaryActivity;
 import cyua.hilife.CustomerView.TimeLineModel;
 import cyua.hilife.Database.DbOpenHelper;
 import cyua.hilife.R;
@@ -52,6 +56,19 @@ public class TimelineFragment extends Fragment{
         adapter = new TimeLineAdapter(this.getContext(), list);
 
         listView.setAdapter(adapter);
+
+        // on click: Go to diary activity
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                TimeLineModel tlm = (TimeLineModel) adapterView.getItemAtPosition(position);
+                Intent intent = new Intent(TimelineFragment.this.getContext(), DiaryActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(DiaryActivity.ARG_KEY, tlm);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initData(){
@@ -63,7 +80,9 @@ public class TimelineFragment extends Fragment{
         while (cursor.moveToNext()) {
             TimeLineModel tlm = new TimeLineModel(R.drawable.medicalcheck2,
                     cursor.getString(cursor.getColumnIndex("datetime")),
-                    cursor.getString(cursor.getColumnIndex("content")));
+                    cursor.getString(cursor.getColumnIndex("title")),
+                    cursor.getString(cursor.getColumnIndex("content")),
+                    cursor.getString(cursor.getColumnIndex("audio")));
             list.add(tlm);
         }
 

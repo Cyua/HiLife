@@ -12,6 +12,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import cyua.hilife.CustomerView.AvatarImageView;
 import cyua.hilife.Database.DbQueryHelper;
 import cyua.hilife.Fragment.CalendarFragment;
 import cyua.hilife.Fragment.RecordFragment;
@@ -51,6 +52,12 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
         TextView textView = (TextView)findViewById(R.id.username);
         textView.setText(dbQueryHelper.getUserName());
 
+        TextView motto = (TextView)findViewById(R.id.motto);
+        motto.setText(dbQueryHelper.getMotto());
+
+        AvatarImageView avatarImageView = (AvatarImageView)findViewById(R.id.title_avatar);
+        avatarImageView.setImageDrawable(dbQueryHelper.getAvatar(dbQueryHelper.getUserName()));
+
         timeline_rbtn = (RadioButton) findViewById(R.id.timeline_rbtn);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         timeline_rbtn.setChecked(true);
@@ -58,6 +65,8 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
 
         fragmentTransaction.add(R.id.fragment, new TimelineFragment());
         fragmentTransaction.commit();
+
+        dbQueryHelper.closeDb();
     }
 
     void switchFragment(Fragment fragment){

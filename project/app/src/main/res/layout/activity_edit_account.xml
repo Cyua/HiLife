@@ -3,40 +3,80 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="#e8e8e8"
     android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context="cyua.hilife.Aty.EditAccountActivity">
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="我该怎么称呼您?"
-        android:textColor="#000000"
-        android:textAlignment="center"
-        android:typeface="monospace"
-        android:textSize="25dp"
-        android:layout_marginTop="100dp" />
+    <cyua.hilife.CustomerView.AvatarImageView
+        android:id="@+id/editAvatar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="60dp"
+        android:layout_gravity="center"
+        android:src="@drawable/avatar"
+        />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
+        android:id="@+id/editName"
         android:layout_gravity="center_vertical"
         android:enabled="true"
         android:inputType="text"
         android:editable="true"
         android:gravity="center"
+        android:background="#ffffff"
+        android:hint="USER NAME"
+        android:textColorHint="@color/colorHint"
         android:textColor="#000000"
         />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/newaccountbtn"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="70dp"
-        android:clickable="true"
-        android:background="@drawable/button_confirm_selector"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="1dp"
+        android:id="@+id/editMotto"
+        android:layout_gravity="center_vertical"
+        android:enabled="true"
+        android:inputType="text"
+        android:editable="true"
+        android:gravity="center"
+        android:background="#ffffff"
+        android:hint="MOTTO"
+        android:textColorHint="@color/colorHint"
+        android:textColor="#000000"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="1dp"
+        android:id="@+id/editPasswd"
+        android:layout_gravity="center_vertical"
+        android:enabled="true"
+        android:inputType="textPassword"
+        android:editable="true"
+        android:gravity="center"
+        android:background="#ffffff"
+        android:hint="PASSWORD"
+        android:textColorHint="@color/colorHint"
+        android:textColor="#000000"
+        />
+
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/editAccountBtn"
+        android:text="CONFIRM"
+        android:textColor="#ffffff"
+        android:background="#e84c3d"
+        android:focusable="true"
+        />
 
 </LinearLayout>

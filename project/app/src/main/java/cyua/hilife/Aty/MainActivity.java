@@ -12,6 +12,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import cyua.hilife.CustomerView.AvatarImageView;
 import cyua.hilife.Database.DbQueryHelper;
 import cyua.hilife.Fragment.CalendarFragment;
 import cyua.hilife.Fragment.RecordFragment;
@@ -53,6 +54,9 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
 
         TextView motto = (TextView)findViewById(R.id.motto);
         motto.setText(dbQueryHelper.getMotto());
+
+        AvatarImageView avatarImageView = (AvatarImageView)findViewById(R.id.title_avatar);
+        avatarImageView.setImageDrawable(dbQueryHelper.getAvatar(dbQueryHelper.getUserName()));
 
         timeline_rbtn = (RadioButton) findViewById(R.id.timeline_rbtn);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);

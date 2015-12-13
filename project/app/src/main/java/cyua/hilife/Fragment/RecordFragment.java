@@ -22,9 +22,11 @@ import java.util.Date;
 import java.util.Locale;
 
 import cyua.hilife.Adapter.ChatArrayAdapter;
+import cyua.hilife.CustomerView.AvatarImageView;
 import cyua.hilife.CustomerView.ChatMessage;
 import cyua.hilife.CustomerView.HintMessage;
 import cyua.hilife.Database.DbOpenHelper;
+import cyua.hilife.Database.DbQueryHelper;
 import cyua.hilife.R;
 
 /**
@@ -59,6 +61,12 @@ public class RecordFragment extends Fragment {
 
         chatArrayAdapter = new ChatArrayAdapter(this.getContext(), R.layout.activity_chat_singlemessage);
         listView.setAdapter(chatArrayAdapter);
+
+        DbQueryHelper dbQueryHelper = new DbQueryHelper(this.getContext());
+        AvatarImageView avatarImageView = (AvatarImageView)view.findViewById(R.id.title_avatar);
+        avatarImageView.setImageDrawable(dbQueryHelper.getAvatar(dbQueryHelper.getUserName()));
+        dbQueryHelper.closeDb();
+
 
         provideHint();
         openDatetime = getDateTime();

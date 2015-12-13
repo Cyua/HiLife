@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.TextView;
+
+import cyua.hilife.CustomerView.AvatarImageView;
+import cyua.hilife.Database.DbQueryHelper;
 import cyua.hilife.R;
 /**
  * Created by Cyua on 15/12/7.
@@ -22,6 +25,12 @@ public class CalendarFragment extends Fragment {
         title.setText("日历");
         button.setBackgroundColor(Color.TRANSPARENT);
         button.setText("添加");
+
+        DbQueryHelper dbQueryHelper = new DbQueryHelper(this.getContext());
+        AvatarImageView avatarImageView = (AvatarImageView)view.findViewById(R.id.title_avatar);
+        avatarImageView.setImageDrawable(dbQueryHelper.getAvatar(dbQueryHelper.getUserName()));
+        dbQueryHelper.closeDb();
+
 
         CalendarView cv = (CalendarView)view.findViewById(R.id.calendarView);
         cv.setMaxDate(cv.getDate());

@@ -2,6 +2,7 @@ package cyua.hilife.Aty;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import cyua.hilife.Database.DbOpenHelper;
+import cyua.hilife.Database.DbImageHelper;
 import cyua.hilife.R;
 
 public class NewAccountActivity extends AppCompatActivity {
@@ -43,8 +45,11 @@ public class NewAccountActivity extends AppCompatActivity {
                 String repeatpasswd = repeat.getText().toString();
                 if(!usrName.equals("")){
                     if (password.equals(repeatpasswd) && !password.equals("")) {
-                        db.execSQL("INSERT INTO account(username,passwd) VALUES(?,?)",
-                                new String[]{usrName, password});
+
+                        db.execSQL("INSERT INTO account(username,passwd,motto) VALUES(?,?,?)",
+                                new String[]{usrName, password,"No motto now..."});
+                        DbImageHelper.getInstance().modifyAvatar(db,usrName,
+                                ContextCompat.getDrawable(NewAccountActivity.this,R.drawable.avatar));
                         db.close();
                         Intent intent = new Intent(NewAccountActivity.this, MainActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

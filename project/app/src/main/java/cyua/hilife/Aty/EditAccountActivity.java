@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,15 +15,13 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.util.Calendar;
-import java.util.logging.Logger;
+
 
 import cyua.hilife.CustomerView.AvatarImageView;
+import cyua.hilife.Database.DbImageHelper;
 import cyua.hilife.Database.DbOpenHelper;
 import cyua.hilife.Database.DbQueryHelper;
 import cyua.hilife.R;
@@ -115,27 +113,11 @@ public class EditAccountActivity extends AppCompatActivity {
         } else if (requestCode == AppConstant.INTENT_CROP) {
             Bitmap bitmap = data.getParcelableExtra("data");
             avatar.setImageBitmap(bitmap);
-            File temp = new File(Environment.getExternalStorageDirectory()
-                    .getPath() + "/HiLife/");// 自已缓存文件夹
-            if (!temp.exists()) {
-                temp.mkdir();
-            }
-            File tempFile = new File(temp.getAbsolutePath()+"/"
-                    +  "avatar.jpg"); // 以时间秒为文件名
-            // 图像保存到文件中
-            FileOutputStream foutput = null;
-            try {
-                foutput = new FileOutputStream(tempFile);
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, foutput);
-//                if (bitmap.compress(Bitmap.CompressFormat.JPEG, 100, foutput)) {
-//                    Toast.makeText(EditAccountActivity.this,
-//                            "已生成缓存文件，等待上传！文件位置：" + tempFile.getAbsolutePath(),
-//                            Toast.LENGTH_LONG).show();
-//                }
-            } catch (FileNotFoundException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+            BitmapDrawable bitmapDrawable = new BitmapDrawable(bitmap);
+            Drawable drawable = bitmapDrawable;
+            DbOpenHelper dbOpenHelper = new DbOpenHelper(EditAccountActivity.this);
+            SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
+            DbImageHelper.getInstance().modifyAvatar(db,"username",drawable);
         }
     }
 }

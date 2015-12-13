@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 
 import java.io.ByteArrayOutputStream;
 
@@ -24,11 +25,11 @@ public class DbImageHelper {
         return dbImageHelper;
     }
 
-    private void initDataBase (SQLiteDatabase db,Context context, int id) {
-        Drawable drawable = ContextCompat.getDrawable(context,id);
-        ContentValues cv = new ContentValues();
-        cv.put("avatar", getPicture(drawable));
-        db.insert("account", null, cv);
+    public void modifyAvatar (SQLiteDatabase db,String username,Drawable drawable) {
+        if(drawable==null)
+            Log.e("asdfasdfasdfasd","null");
+        db.execSQL("UPDATE account SET avatar = ? ",
+               new byte[][]{getPicture(drawable)});
     }
 
     private byte[] getPicture(Drawable drawable) {

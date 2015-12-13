@@ -18,8 +18,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cyua.hilife.Adapter.TimeLineAdapter;
+import cyua.hilife.CustomerView.AvatarImageView;
 import cyua.hilife.CustomerView.TimeLineModel;
 import cyua.hilife.Database.DbOpenHelper;
+import cyua.hilife.Database.DbQueryHelper;
 import cyua.hilife.R;
 /**
  * Created by Cyua on 15/12/9.
@@ -41,6 +43,11 @@ public class TimelineFragment extends Fragment{
         button.setText("添加");
 
         dbOpenHelper = new DbOpenHelper(this.getContext());
+
+        DbQueryHelper dbQueryHelper = new DbQueryHelper(this.getContext());
+        AvatarImageView avatarImageView = (AvatarImageView)view.findViewById(R.id.title_avatar);
+        avatarImageView.setImageDrawable(dbQueryHelper.getAvatar(dbQueryHelper.getUserName()));
+        dbQueryHelper.closeDb();
 
         initData();
         initView();

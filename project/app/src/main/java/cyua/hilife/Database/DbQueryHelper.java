@@ -3,6 +3,12 @@ package cyua.hilife.Database;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
 
 /**
  * Created by Cyua on 12/11/15.
@@ -41,6 +47,20 @@ public class DbQueryHelper {
 
     public String getMotto(){
         return motto;
+    }
+
+    public Drawable getAvatar(String username){
+        Cursor c = db.query("account",null,null,null,null,null,null);
+        Drawable drawable = null;
+        while(c.moveToNext()){
+            if(c.getString(0).equals(username)){
+                byte[] b = c.getBlob(c.getColumnIndex("avatar"));
+                Bitmap bitmap = BitmapFactory.decodeByteArray(b, 0, b.length, null);
+                BitmapDrawable bitmapDrawable = new BitmapDrawable(bitmap);
+                drawable = bitmapDrawable;
+            }
+        }
+        return drawable;
     }
 
     public void closeDb(){

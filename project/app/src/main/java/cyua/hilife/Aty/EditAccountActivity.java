@@ -46,6 +46,10 @@ public class EditAccountActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 
         avatar = (AvatarImageView)findViewById(R.id.editAvatar);
+        DbQueryHelper dbQueryHelper = new DbQueryHelper(this);
+        avatar.setImageDrawable(dbQueryHelper.getAvatar(dbQueryHelper.getUserName()));
+        dbQueryHelper.closeDb();
+
         final EditText editName = (EditText)findViewById(R.id.editName);
         final EditText motto = (EditText)findViewById(R.id.editMotto);
         final EditText passwd = (EditText)findViewById(R.id.editPasswd);

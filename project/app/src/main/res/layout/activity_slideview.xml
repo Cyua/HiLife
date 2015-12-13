@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbars="none"
-    android:background="@drawable/menu_bg"
+    android:background="#42494f"
     >
 
     <LinearLayout

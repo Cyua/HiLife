@@ -13,7 +13,6 @@ import android.widget.TextView;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-import cyua.hilife.CustomerView.AudioPlayButton;
 import cyua.hilife.CustomerView.TimeLineModel;
 import cyua.hilife.R;
 
@@ -46,7 +45,11 @@ public class DiaryActivity extends AppCompatActivity {
 
         LayoutParams lparams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 
-        String[] audios = audio.split("\n");
+        String[] audios = new String[] {};
+        if (!audio.isEmpty())
+            audios = audio.split("\n");
+
+
         for (int i = 0; i < audios.length; i++) {
             String rawAudioInfo = audios[i];
             String[] audioInfo = rawAudioInfo.split(",");    // array[0]: duration, array[1]: path
@@ -63,6 +66,24 @@ public class DiaryActivity extends AppCompatActivity {
                 }
             });
             audioButtons.addView(btn, lparams);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (player != null) {
+            player.release();
+            player = null;
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (player != null) {
+            player.release();
+            player = null;
         }
     }
 

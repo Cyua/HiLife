@@ -1,32 +1,36 @@
 package cyua.hilife.utils;
 
 import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.SystemClock;
+import android.support.v4.app.NotificationCompat;
+import android.widget.Toast;
+
+import cyua.hilife.Aty.MainActivity;
+import cyua.hilife.R;
 
 /**
  * Created by Cyua on 12/18/15.
  */
-public class PollingUtils {
-    //开启轮询服务
-    public static void startPollingService(Context context, int seconds, Class<?> cls,String action) {
-        //获取AlarmManager系统服务
-        AlarmManager manager = (AlarmManager) context
-                .getSystemService(Context.ALARM_SERVICE);
+public class PollingUtils extends BroadcastReceiver{
+    private NotificationManager manager;
 
-        //包装需要执行Service的Intent
-        Intent intent = new Intent(context, cls);
-        intent.setAction(action);
-        PendingIntent pendingIntent = PendingIntent.getService(context, 0,
-                intent, PendingIntent.FLAG_UPDATE_CURRENT);
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        Toast.makeText(context, "闹铃响了, 可以做点事情了~~", Toast.LENGTH_LONG).show();
+        manager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        //触发服务的起始时间
-        long triggerAtTime = SystemClock.elapsedRealtime();
-
-        //使用AlarmManger的setRepeating方法设置定期执行的时间间隔（seconds秒）和需要执行的Service
-        manager.setRepeating(AlarmManager.ELAPSED_REALTIME, triggerAtTime,
-                seconds * 1000, pendingIntent);
+        Intent playIntent  = new Intent(context, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context,1,playIntent,PendingIntent.FLAG_UPDATE_CURRENT);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
+        builder.setContentTitle("title").setContentText(".....").setSmallIcon(R.mipmap.ic_hilife)
+                .setDefaults(Notification.DEFAULT_ALL).setContentIntent(pendingIntent)
+                .setAutoCancel(true).setSubText("*****");
+        manager.notify(1,builder.build());
     }
 }

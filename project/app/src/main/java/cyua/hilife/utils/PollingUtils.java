@@ -22,13 +22,13 @@ public class PollingUtils extends BroadcastReceiver{
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Toast.makeText(context, "闹铃响了, 可以做点事情了~~", Toast.LENGTH_LONG).show();
-        manager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        Intent playIntent  = new Intent(context, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context,1,playIntent,PendingIntent.FLAG_UPDATE_CURRENT);
+        manager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
+        Intent target = new Intent(context, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context,0,target,0);
+
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
-        builder.setContentTitle("title").setContentText(".....").setSmallIcon(R.mipmap.ic_hilife)
+        builder.setContentTitle("HiLife").setContentText(".....").setSmallIcon(R.mipmap.ic_hilife)
                 .setDefaults(Notification.DEFAULT_ALL).setContentIntent(pendingIntent)
                 .setAutoCancel(true).setSubText("*****");
         manager.notify(1,builder.build());

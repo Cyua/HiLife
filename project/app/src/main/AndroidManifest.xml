@@ -56,6 +56,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cyua.hilife.Aty.MainActivity" />
         </activity>
+        <receiver android:name="cyua.hilife.utils.PollingUtils" android:process=":remote"></receiver>
     </application>
 
 </manifest>

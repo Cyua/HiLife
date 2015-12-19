@@ -8,6 +8,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import cyua.hilife.Database.DbQueryHelper;
 import cyua.hilife.R;
@@ -39,9 +40,11 @@ public class CheckAccountActivity extends AppCompatActivity {
                         startActivity(intent);
                     } else {
                         warning.setText("* 账号密码错误");
+                        Toast.makeText(CheckAccountActivity.this, "账号密码错误", Toast.LENGTH_LONG).show();
                     }
                 } else {
                     warning.setText("* 请输入账号密码");
+                    Toast.makeText(CheckAccountActivity.this, "请输入账号密码", Toast.LENGTH_LONG).show();
                 }
             }
         });

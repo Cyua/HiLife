@@ -17,8 +17,10 @@ import android.view.WindowManager;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.TimeZone;
 
 import cyua.hilife.CustomerView.AvatarImageView;
 import cyua.hilife.Database.DbQueryHelper;
@@ -55,7 +57,7 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
                 startActivity(intent);
             }
         });
-
+        setPolling(true);
     }
 
     void initData(){
@@ -90,15 +92,12 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
         switch (checkedId){
             case R.id.timeline_rbtn:
                 switchFragment(new TimelineFragment());
-                setPolling(true);
                 break;
             case R.id.calendar_rbtn:
                 switchFragment(new CalendarFragment());
-                setPolling(true);
                 break;
             case R.id.record_rbtn:
                 switchFragment(new RecordFragment());
-                setPolling(true);
                 break;
         }
     }
@@ -106,7 +105,6 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
     @Override
     protected void onDestroy() {
         super.onDestroy();
-//        PollingUtils.stopPollingService(this,PollingService.class,PollingService.ACTION);
     }
 
     public void setPolling(boolean b){
@@ -121,16 +119,58 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
 ////        else{
 ////            am.cancel(pendingIntent);
 ////        }
-        NotificationManager manager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-        Context context = getApplicationContext();
-        Intent intent = new Intent(this,MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this,0,intent,0);
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
-        builder.setContentTitle("title").setContentText(".....").setSmallIcon(R.mipmap.ic_hilife)
-                .setDefaults(Notification.DEFAULT_ALL).setContentIntent(pendingIntent)
-                .setAutoCancel(true).setSubText("*****");
-        manager.notify(1,builder.build());
+        Intent intent = new Intent(MainActivity.this,PollingUtils.class);
+        PendingIntent sender0 = PendingIntent.getBroadcast(MainActivity.this,0,intent,0);
+        PendingIntent sender1 = PendingIntent.getBroadcast(MainActivity.this,1,intent,0);
+        PendingIntent sender2 = PendingIntent.getBroadcast(MainActivity.this,2,intent,0);
+        PendingIntent sender3 = PendingIntent.getBroadcast(MainActivity.this,3,intent,0);
 
+
+        Calendar morningCal = Calendar.getInstance();
+        morningCal.setTimeInMillis(System.currentTimeMillis());
+        morningCal.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+        morningCal.set(Calendar.HOUR_OF_DAY, 8);
+        morningCal.set(Calendar.MINUTE,0);
+        morningCal.set(Calendar.SECOND,0);
+        if(morningCal.getTimeInMillis() < System.currentTimeMillis()){
+            morningCal.set(Calendar.DAY_OF_YEAR,morningCal.get(Calendar.DAY_OF_YEAR)+1);
+        }
+
+        Calendar afternoonCal = Calendar.getInstance();
+        afternoonCal.setTimeInMillis(System.currentTimeMillis());
+        afternoonCal.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+        afternoonCal.set(Calendar.HOUR_OF_DAY, 12);
+        afternoonCal.set(Calendar.MINUTE,0);
+        afternoonCal.set(Calendar.SECOND,0);
+        if(afternoonCal.getTimeInMillis() < System.currentTimeMillis()){
+            afternoonCal.set(Calendar.DAY_OF_YEAR,afternoonCal.get(Calendar.DAY_OF_YEAR)+1);
+        }
+
+        Calendar eveningCal = Calendar.getInstance();
+        eveningCal.setTimeInMillis(System.currentTimeMillis());
+        eveningCal.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+        eveningCal.set(Calendar.HOUR_OF_DAY, 18);
+        eveningCal.set(Calendar.MINUTE,0);
+        eveningCal.set(Calendar.SECOND,0);
+        if(eveningCal.getTimeInMillis() < System.currentTimeMillis()){
+            eveningCal.set(Calendar.DAY_OF_YEAR,eveningCal.get(Calendar.DAY_OF_YEAR)+1);
+        }
+
+        Calendar testCal = Calendar.getInstance();
+        testCal.setTimeInMillis(System.currentTimeMillis());
+        testCal.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+        testCal.set(Calendar.HOUR_OF_DAY, 15);
+        testCal.set(Calendar.MINUTE,48);
+        testCal.set(Calendar.SECOND,0);
+        if(testCal.getTimeInMillis() < System.currentTimeMillis()){
+            testCal.set(Calendar.DAY_OF_YEAR,testCal.get(Calendar.DAY_OF_YEAR)+1);
+        }
+
+        AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        manager.setRepeating(AlarmManager.RTC_WAKEUP,testCal.getTimeInMillis(),AlarmManager.INTERVAL_DAY,sender0);
+        manager.setRepeating(AlarmManager.RTC_WAKEUP,morningCal.getTimeInMillis(),AlarmManager.INTERVAL_DAY,sender1);
+        manager.setRepeating(AlarmManager.RTC_WAKEUP,eveningCal.getTimeInMillis(),AlarmManager.INTERVAL_DAY,sender2);
+        manager.setRepeating(AlarmManager.RTC_WAKEUP,afternoonCal.getTimeInMillis(),AlarmManager.INTERVAL_DAY,sender3);
     }
 }

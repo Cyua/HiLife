@@ -80,7 +80,7 @@ public class TimelineFragment extends Fragment{
         list = new ArrayList<TimeLineModel>();
 
         db = dbOpenHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM diary", new String[]{});
+        Cursor cursor = db.rawQuery("SELECT * FROM diary ORDER BY datetime DESC", new String[]{});
 
         while (cursor.moveToNext()) {
             TimeLineModel tlm = new TimeLineModel(R.drawable.medicalcheck2,

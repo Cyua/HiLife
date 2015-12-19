@@ -38,7 +38,7 @@ public class CalendarFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 int y = datePicker.getYear();
-                int m = datePicker.getMonth();
+                int m = datePicker.getMonth() + 1;    // getMonth returns 0~11
                 int d = datePicker.getDayOfMonth();
                 Intent intent = new Intent(view.getContext(), OneDayActivity.class);
                 intent.putExtra("year",y);

@@ -28,7 +28,7 @@ public class PollingUtils extends BroadcastReceiver{
         PendingIntent pendingIntent = PendingIntent.getActivity(context,0,target,0);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
-        builder.setContentTitle("HiLife").setContentText(".....").setSmallIcon(R.mipmap.ic_hilife)
+        builder.setContentTitle("HiLife").setContentText("来写点日记记录生活吧!~").setSmallIcon(R.mipmap.ic_hilife)
                 .setDefaults(Notification.DEFAULT_ALL).setContentIntent(pendingIntent)
                 .setAutoCancel(true).setSubText("*****");
         manager.notify(1,builder.build());

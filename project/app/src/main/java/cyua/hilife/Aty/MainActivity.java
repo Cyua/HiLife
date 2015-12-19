@@ -28,7 +28,6 @@ import cyua.hilife.Fragment.CalendarFragment;
 import cyua.hilife.Fragment.RecordFragment;
 import cyua.hilife.Fragment.TimelineFragment;
 import cyua.hilife.R;
-import cyua.hilife.utils.PollingService;
 import cyua.hilife.utils.PollingUtils;
 
 
@@ -108,17 +107,6 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
     }
 
     public void setPolling(boolean b){
-//        AlarmManager am = (AlarmManager)getSystemService(ALARM_SERVICE);
-//        PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, new Intent(this, PollingUtils.class), 0);
-////        if(b) {
-//            Calendar c = Calendar.getInstance();
-//            c.setTimeInMillis(System.currentTimeMillis());
-//            c.add(Calendar.SECOND, 10);
-//            am.set(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
-////        }
-////        else{
-////            am.cancel(pendingIntent);
-////        }
 
         Intent intent = new Intent(MainActivity.this,PollingUtils.class);
         PendingIntent sender0 = PendingIntent.getBroadcast(MainActivity.this,0,intent,0);
@@ -160,7 +148,7 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
         Calendar testCal = Calendar.getInstance();
         testCal.setTimeInMillis(System.currentTimeMillis());
         testCal.setTimeZone(TimeZone.getTimeZone("GMT+8"));
-        testCal.set(Calendar.HOUR_OF_DAY, 15);
+        testCal.set(Calendar.HOUR_OF_DAY, 23);
         testCal.set(Calendar.MINUTE,48);
         testCal.set(Calendar.SECOND,0);
         if(testCal.getTimeInMillis() < System.currentTimeMillis()){

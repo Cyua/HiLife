@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#e8e8e8">
+    android:background="#f1f1f1">
 
     <include layout="@layout/layout_main_title"/>
 

@@ -42,8 +42,7 @@ public class TimelineFragment extends Fragment{
         TextView title = (TextView) view.findViewById(R.id.title_tv);
         Button button = (Button) view.findViewById(R.id.header_imgbtn);
         title.setText("时光轴");
-        button.setBackgroundColor(Color.TRANSPARENT);
-        button.setText("添加");
+
 
         dbOpenHelper = new DbOpenHelper(this.getContext());
 
@@ -93,20 +92,6 @@ public class TimelineFragment extends Fragment{
         }
 
         db.close();
-        /*
-        list.add(new TimeLineModel(R.drawable.medicalcheck2, "10月10日","hahahah"));
-
-        list.add(new TimeLineModel(R.drawable.nurse_visit2, "11月11日","233333"));
-
-        list.add(new TimeLineModel(R.drawable.nursingcareplan2, "12月12日","Today is Dec 9th. And I feel really bad.."));
-
-        list.add(new TimeLineModel(R.drawable.medicalcheck2, "1月1日","Forget the message above! 2333333"));
-
-        list.add(new TimeLineModel(R.drawable.nurse_visit2, "2月2日","Hellooooooooooo! Yohoooooooo!"));
-
-        list.add(new TimeLineModel(R.drawable.nursingcareplan2, "3月3日","I'm gonna be crazy..."));
-*/
-
     }
 
     @Override

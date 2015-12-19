@@ -24,7 +24,7 @@ public class CalendarFragment extends Fragment {
         Button button = (Button) view.findViewById(R.id.header_imgbtn);
         title.setText("日历");
         button.setBackgroundColor(Color.TRANSPARENT);
-        button.setText("添加");
+        button.setText("进入");
 
         DbQueryHelper dbQueryHelper = new DbQueryHelper(this.getContext());
         AvatarImageView avatarImageView = (AvatarImageView)view.findViewById(R.id.title_avatar);

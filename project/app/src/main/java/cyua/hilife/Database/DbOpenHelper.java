@@ -16,6 +16,7 @@ public class DbOpenHelper extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS diary (datetime TEXT, location TEXT, title TEXT, content TEXT, audio TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS account (username TEXT, passwd TEXT, motto TEXT, avatar BLOB)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS setting (morning TEXT, afternoon TEXT, evening TEXT)");
 
     }
 

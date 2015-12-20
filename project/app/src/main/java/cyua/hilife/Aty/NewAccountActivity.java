@@ -10,6 +10,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import cyua.hilife.Database.DbOpenHelper;
 import cyua.hilife.Database.DbImageHelper;
@@ -48,6 +49,8 @@ public class NewAccountActivity extends AppCompatActivity {
 
                         db.execSQL("INSERT INTO account(username,passwd,motto) VALUES(?,?,?)",
                                 new String[]{usrName, password,"No motto now..."});
+                        db.execSQL("INSERT INTO setting(morning,afternoon,evening) VALUES(?,?,?)",
+                                new String[]{"true","true","true"});
                         DbImageHelper.getInstance().modifyAvatar(db,usrName,
                                 ContextCompat.getDrawable(NewAccountActivity.this,R.drawable.avatar));
                         db.close();
@@ -60,10 +63,12 @@ public class NewAccountActivity extends AppCompatActivity {
                         passwd.setText("");
                         repeat.setText("");
                         warning.setText("* 两次密码输入不一致");
+                        Toast.makeText(NewAccountActivity.this, "两次密码输入不一致", Toast.LENGTH_LONG).show();
                     }
                 }
                 else{
                     warning.setText("* 请输入用户名");
+                    Toast.makeText(NewAccountActivity.this, "请输入用户名", Toast.LENGTH_LONG).show();
                 }
             }
         });

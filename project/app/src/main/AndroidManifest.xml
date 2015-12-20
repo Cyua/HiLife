@@ -63,8 +63,9 @@
             android:name=".utils.PollingUtils"
             android:process=":remote" />
 
-        <activity android:name=".Aty.OneDayActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Aty.OneDayActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

@@ -18,11 +18,15 @@ public class DbQueryHelper {
     private SQLiteDatabase db;
     private String passwd;
     private String motto;
+    private boolean m,a,e;
     public DbQueryHelper(Context context){
         dbOpenHelper = new DbOpenHelper(context);
         db = dbOpenHelper.getWritableDatabase();
         passwd = "";
         motto = "";
+        m = false;
+        a = false;
+        e = false;
     }
     public String getUserName(){
         Cursor cursor = db.rawQuery("SELECT * FROM account", new String[]{});
@@ -61,6 +65,37 @@ public class DbQueryHelper {
             }
         }
         return drawable;
+    }
+
+    public void updateSetting(){
+        Cursor cursor = db.rawQuery("SELECT * FROM setting", new String[]{});
+        if (cursor.moveToNext()){
+            if(cursor.getString(0).equals("true"))
+                m = true;
+            else
+                m = false;
+            if(cursor.getString(1).equals("true"))
+                a = true;
+            else
+                a = false;
+
+            if(cursor.getString(2).equals("true"))
+                e = true;
+            else
+                e = false;
+        }
+    }
+
+    public boolean isMorningSetted(){
+        return m;
+    }
+
+    public boolean isAfternoonSetted(){
+        return a;
+    }
+
+    public boolean isEveningSetted(){
+        return e;
     }
 
     public void closeDb(){

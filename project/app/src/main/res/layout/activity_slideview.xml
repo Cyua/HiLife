@@ -137,7 +137,7 @@
                     android:layout_marginTop="10dp"
                     />
 
-                <!-- 我的收藏-->
+                <!-- 晨间提醒-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -145,7 +145,7 @@
                     android:layout_marginTop="10dp"
                     >
                     <TextView
-                        android:text="系统设置"
+                        android:text="晨间提醒"
                         android:textSize="15sp"
                         android:textColor="#fff"
                         android:layout_width="wrap_content"
@@ -154,14 +154,63 @@
                         android:layout_gravity="center"
                         android:layout_marginLeft="8dp"
                         />
-                    <ImageView
+                    <Switch
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/right_arrow"
                         android:layout_gravity="center"
+                        android:id="@+id/moringSetting"
                         />
                 </LinearLayout>
 
+                <!-- 午间提醒-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    >
+                    <TextView
+                        android:text="午间提醒"
+                        android:textSize="15sp"
+                        android:textColor="#fff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="8dp"
+                        />
+                    <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:id="@+id/afternoonSetting"
+                        />
+                </LinearLayout>
+
+                <!-- 晚间提醒-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    >
+                    <TextView
+                        android:text="晚间提醒"
+                        android:textSize="15sp"
+                        android:textColor="#fff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="8dp"
+                        />
+                    <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:id="@+id/eveningSetting"
+                        />
+                </LinearLayout>
 
 
             </LinearLayout>

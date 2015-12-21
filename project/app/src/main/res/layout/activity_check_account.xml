@@ -11,19 +11,27 @@
     android:orientation="vertical"
     tools:context="cyua.hilife.Aty.CheckAccountActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="请输入账号密码"
-        android:id="@+id/checkAccountView"
-        android:textColor="#e84c3d"
-        android:textAlignment="center"
-        android:typeface="monospace"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:layout_marginTop="100dp" />
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:text="请输入账号密码"-->
+        <!--android:id="@+id/checkAccountView"-->
+        <!--android:textColor="#e84c3d"-->
+        <!--android:textAlignment="center"-->
+        <!--android:typeface="monospace"-->
+        <!--android:textSize="30dp"-->
+        <!--android:textStyle="bold"-->
+        <!--android:focusable="true"-->
+        <!--android:focusableInTouchMode="true"-->
+        <!--android:layout_marginTop="100dp" />-->
+
+    <cyua.hilife.CustomerView.AvatarImageView
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="60dp"
+        android:layout_gravity="center"
+        android:src="@drawable/icon_hilife"
+        />
 
     <EditText
         android:layout_width="match_parent"

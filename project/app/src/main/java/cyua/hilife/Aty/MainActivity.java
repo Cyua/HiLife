@@ -132,8 +132,8 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
         avatarImageView.setImageDrawable(dbQueryHelper.getAvatar(dbQueryHelper.getUserName()));
 
         timeline_rbtn = (RadioButton) findViewById(R.id.timeline_rbtn);
-        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         timeline_rbtn.setChecked(true);
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         radioGroup.setOnCheckedChangeListener(this);
 
         fragmentTransaction.add(R.id.fragment, new TimelineFragment());

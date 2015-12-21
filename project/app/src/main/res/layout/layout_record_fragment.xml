@@ -20,22 +20,29 @@
     <RelativeLayout
         android:id="@+id/form"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_margin="5dp"
+        android:background="#ffffff"
         android:orientation="vertical">
-
+        <!--<ImageButton-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/buttonAudio"-->
+            <!--android:src="@drawable/voice_off"-->
+            <!--/>-->
         <Button
-            android:layout_width="60dp"
-            android:layout_height="30dp"
-            android:text="Audio"
+            android:layout_width="25dp"
+            android:layout_height="28dp"
             android:id="@+id/buttonAudio"
             android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
-            android:background="#e84c3d"
+            android:background="@drawable/voice_off"
             android:textColor="#ffffff"
+            android:layout_marginBottom="6dp"
+            android:layout_marginLeft="5dp"
             />
 
         <EditText
@@ -47,6 +54,7 @@
             android:layout_toRightOf="@+id/buttonAudio"
             android:layout_toLeftOf="@+id/buttonSend"
             android:layout_alignParentBottom="true"
+            android:layout_marginLeft="5dp"
             />
 
         <Button
@@ -59,7 +67,7 @@
             android:layout_alignParentBottom="true"
             android:background="#e84c3d"
             android:textColor="#ffffff"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="6dp"
             />
 
     </RelativeLayout>

@@ -26,8 +26,6 @@ public class DbImageHelper {
     }
 
     public void modifyAvatar (SQLiteDatabase db,String username,Drawable drawable) {
-        if(drawable==null)
-            Log.e("asdfasdfasdfasd","null");
         db.execSQL("UPDATE account SET avatar = ? ",
                new byte[][]{getPicture(drawable)});
     }

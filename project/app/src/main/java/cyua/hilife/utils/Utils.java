@@ -36,16 +36,10 @@ public class Utils {
 			Intent intent = new Intent();
 			intent.setType("image/*");
 			intent.setAction(Intent.ACTION_GET_CONTENT);
-			//由于startActivityForResult()的第二个参数"requestCode"为常量，
-			//个人喜好把常量用一个类全部装起来，不知道各位大神对这种做法有异议没？
 			activity.startActivityForResult(intent, AppConstant.KITKAT_LESS);
 		} else {
 			Intent intent = new Intent();
 			intent.setType("image/*");
-			//由于Intent.ACTION_OPEN_DOCUMENT的版本是4.4以上的内容
-			//所以注意这个方法的最上面添加了@SuppressLint("InlinedApi")
-			//如果客户使用的不是4.4以上的版本，因为前面有判断，所以根本不会走else，
-			//也就不会出现任何因为这句代码引发的错误
 			intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
 			activity.startActivityForResult(intent, AppConstant.KITKAT_ABOVE);
 		}
@@ -70,21 +64,7 @@ public class Utils {
 		activity.startActivityForResult(innerIntent, AppConstant.INTENT_CROP);
 	}
 	
-	
-	/**
-	 * 下面几个方法来自于stackoverflow,虽然来自大神，但大神的代码也不是就那样？
-	 * 看不懂的地方挨个百度。
-	 * -----------------------割-------------------------
-	 * Get a file path from a Uri. This will get the the path for Storage Access
-	 * Framework Documents, as well as the _data field for the MediaStore and
-	 * other file-based ContentProviders.
-	 * 
-	 * @param context
-	 *            The context.
-	 * @param uri
-	 *            The Uri to query.
-	 * @author paulburke
-	 */
+
 	@SuppressLint("NewApi")
 	public String getPath(final Context context, final Uri uri) {
 

@@ -112,7 +112,9 @@ public class RecordFragment extends Fragment {
                     try {
                         recorder.prepare();
                         recorder.start();
-                        buttonAudio.setText("Stop");
+//                        buttonAudio.setText("Stop");
+                        buttonAudio.setBackgroundResource(R.drawable.voice_on);
+
                         startRecording = true;
                     } catch (IOException e) {
                         Log.e(LOG_TAG, "prepare() failed");
@@ -128,7 +130,8 @@ public class RecordFragment extends Fragment {
                     audioCount++;
                     chatArrayAdapter.add(new ChatMessage(false, true, currentFilename));
 
-                    buttonAudio.setText("Audio");
+//                    buttonAudio.setText("Audio");
+                    buttonAudio.setBackgroundResource(R.drawable.voice_off);
                     startRecording = false;
                 }
             }

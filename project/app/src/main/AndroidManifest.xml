@@ -41,15 +41,6 @@
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".Fragment.Diary"
-            android:label="@string/title_activity_diary"
-            android:parentActivityName=".Aty.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="cyua.hilife.Aty.MainActivity" />
-        </activity>
-        <activity
             android:name=".Aty.DiaryActivity"
             android:label="@string/title_activity_diary"
             android:parentActivityName=".Aty.MainActivity"

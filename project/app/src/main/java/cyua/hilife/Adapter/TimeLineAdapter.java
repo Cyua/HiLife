@@ -63,7 +63,10 @@ public class TimeLineAdapter extends BaseAdapter{
 
         hold.dateshow.setText(list.get(position).getDate());
         hold.imageView.setImageResource(list.get(position).getImageview());
-        hold.show.setText(list.get(position).getContent());
+        if (list.get(position).getContent().isEmpty())
+            hold.show.setText("（音频）");
+        else
+            hold.show.setText(list.get(position).getContent());
 
         return convertView;
     }

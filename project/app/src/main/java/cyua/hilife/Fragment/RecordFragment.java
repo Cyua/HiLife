@@ -1,5 +1,6 @@
 package cyua.hilife.Fragment;
 
+import android.content.Context;
 import android.database.DataSetObserver;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaRecorder;
@@ -11,6 +12,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.EditText;

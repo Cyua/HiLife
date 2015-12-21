@@ -43,7 +43,8 @@ public class DiaryActivity extends AppCompatActivity {
         contentView.setText(content);
         dateView.setText(date);
 
-        LayoutParams lparams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        LayoutParams lparams = new LayoutParams(200, 110);
+        lparams.setMargins(10,10,10,10);
 
         String[] audios = new String[] {};
         if (!audio.isEmpty())
@@ -58,6 +59,7 @@ public class DiaryActivity extends AppCompatActivity {
             btn.setLayoutParams(lparams);
             btn.setText(audioInfo[0]);
             btn.setTag(audioInfo[1]);
+            btn.setBackgroundResource(R.color.mainRed);
 
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override

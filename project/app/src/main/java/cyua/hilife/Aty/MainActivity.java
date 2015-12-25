@@ -215,18 +215,8 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
             eveningCal.set(Calendar.DAY_OF_YEAR,eveningCal.get(Calendar.DAY_OF_YEAR)+1);
         }
 
-//        Calendar testCal = Calendar.getInstance();
-//        testCal.setTimeInMillis(System.currentTimeMillis());
-//        testCal.setTimeZone(TimeZone.getTimeZone("GMT+8"));
-//        testCal.set(Calendar.HOUR_OF_DAY, 23);
-//        testCal.set(Calendar.MINUTE,48);
-//        testCal.set(Calendar.SECOND,0);
-//        if(testCal.getTimeInMillis() < System.currentTimeMillis()){
-//            testCal.set(Calendar.DAY_OF_YEAR,testCal.get(Calendar.DAY_OF_YEAR)+1);
-//        }
 
         AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);
-//        manager.setRepeating(AlarmManager.RTC_WAKEUP,testCal.getTimeInMillis(),AlarmManager.INTERVAL_DAY,sender0);
         if(morning)
             manager.setRepeating(AlarmManager.RTC_WAKEUP,morningCal.getTimeInMillis(),AlarmManager.INTERVAL_DAY,sender1);
         else
